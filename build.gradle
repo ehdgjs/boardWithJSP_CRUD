@@ -33,3 +33,12 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+apply plugin: 'java'
+
+//Spring Boot Overriding
+ext['hibernate.version'] = '5.2.11.Final'
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
