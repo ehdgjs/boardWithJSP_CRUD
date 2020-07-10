@@ -30,6 +30,10 @@ dependencies {
     }
 }
 
+dependencies {
+    compile 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
+}
+
 test {
     useJUnitPlatform()
 }
