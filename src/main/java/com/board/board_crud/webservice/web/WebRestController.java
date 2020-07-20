@@ -2,12 +2,10 @@ package com.board.board_crud.webservice.web;
 
 import com.board.board_crud.webservice.domain.posts.PostsRepository;
 import com.board.board_crud.webservice.dto.posts.PostsSaveRequestDto;
+import com.board.board_crud.webservice.dto.posts.PostsUpdateRequestDto;
 import com.board.board_crud.webservice.service.PostsService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -24,5 +22,11 @@ public class WebRestController {
     @PostMapping("/posts")
     public Long savePosts(@RequestBody PostsSaveRequestDto dto){
         return postsService.save(dto);
+    }
+
+    @PostMapping("/update/{id}")
+    public Long updatePosts(@PathVariable Long id, @RequestBody PostsUpdateRequestDto dto)
+    {
+        return postsService.update(id, dto);
     }
 }

@@ -6,6 +6,7 @@ import com.board.board_crud.webservice.domain.posts.PostsRepository;
 import com.board.board_crud.webservice.dto.posts.PostsMainResponseDto;
 import com.board.board_crud.webservice.dto.posts.PostsResponseDto;
 import com.board.board_crud.webservice.dto.posts.PostsSaveRequestDto;
+import com.board.board_crud.webservice.dto.posts.PostsUpdateRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,16 @@ public class PostsService {
     @Transactional
     public Long save(PostsSaveRequestDto dto){
         return postsRepository.save(dto.toEntity()).getId();
+    }
+
+    @Transactional
+    public Long update(Long id, PostsUpdateRequestDto dto)
+    {
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글은 존재하지않습니다."));
+
+        posts.update(dto.getTitle(), dto.getContent());
+        return id;
     }
 
     public PostsResponseDto findById(long id){
