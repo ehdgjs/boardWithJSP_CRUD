@@ -1,6 +1,7 @@
 package com.board.board_crud.webservice.web;
 
 import com.board.board_crud.webservice.domain.posts.PostsRepository;
+import com.board.board_crud.webservice.dto.posts.PostsResponseDto;
 import com.board.board_crud.webservice.dto.posts.PostsSaveRequestDto;
 import com.board.board_crud.webservice.dto.posts.PostsUpdateRequestDto;
 import com.board.board_crud.webservice.service.PostsService;
@@ -28,5 +29,11 @@ public class WebRestController {
     public Long updatePosts(@PathVariable Long id, @RequestBody PostsUpdateRequestDto dto)
     {
         return postsService.update(id, dto);
+    }
+
+    @PostMapping("/delete/{id}")
+    public void deletePosts(@PathVariable Long id)
+    {
+        postsService.delete(id);
     }
 }

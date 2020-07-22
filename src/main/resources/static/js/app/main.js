@@ -7,6 +7,9 @@ var main = {
         $('#btn-update').on('click', function () {
             _this.update();
         });
+        $('#btn-delete').on('click', function () {
+            _this.delete();
+        });
     },
     save : function () {
         var data = {
@@ -25,7 +28,6 @@ var main = {
             alert('글이 등록되었습니다.');
             location.reload();
         }).fail(function (error) {
-            console.log(JSON.stringify(data));
             alert(error);
         });
     },
@@ -46,9 +48,20 @@ var main = {
             alert('글이 수정되었습니다.');
             location.href='/';
         }).fail(function (error) {
-            console.log(JSON.stringify(data));
             alert(error);
         });
+    },
+
+    delete : function () {
+        $.ajax({
+            type: 'POST',
+            url: '/delete/' + $('#id').val(),
+        }).done(function () {
+            alert('게시글이 삭제되었습니다.');
+            location.href='/';
+        }).fail(function (error) {
+            alert(error);
+        })
     }
 
 };

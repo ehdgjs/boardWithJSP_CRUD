@@ -1,5 +1,6 @@
 package com.board.board_crud.webservice.domain.posts;
 
+import com.board.board_crud.webservice.dto.posts.PostsResponseDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
